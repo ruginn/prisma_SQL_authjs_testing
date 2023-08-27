@@ -1,4 +1,6 @@
 import Link  from "next/link"
+import { SignInButton, SignOutButton } from "./Buttons"
+import AuthCheck from "./AuthCheck"
 
 
 function NavMenu() {
@@ -16,6 +18,14 @@ function NavMenu() {
         </li>
         <li className="m-1">
           <Link href={'/users'}>Users</Link>
+        </li>
+        <li>
+          <SignInButton/>
+        </li>
+        <li>
+          <AuthCheck>
+            <SignOutButton/>
+          </AuthCheck>
         </li>
       </ul>
     </div>

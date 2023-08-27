@@ -1,8 +1,4 @@
-interface Post {
-  title: string;
-  content: string;
-  slug: string;
-}
+export const revalidate = 1200;
 
 interface User {
   id: number;
@@ -13,15 +9,15 @@ interface User {
   description: string;
 }
 
-// export async function generateStaticParams() {
-//   const posts: Post[] = await fetch('http://localhost:3000/api/content').then(
-//     (res) => res.json()
-//   );
 
-//   return posts.map((post) => ({
-//     slug: post.slug,
-//   }));
-// }
+export async function generateStaticParams() {
+  const users: User[] = await fetch('http:localhost:3000/api/content').then(
+    (res) => res.json()
+  )
+  return users.map((user)=> ({
+    slug: user.id.toString()
+  }))
+}
 
 interface Props {
   params: { slug: string };
