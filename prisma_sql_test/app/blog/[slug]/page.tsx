@@ -4,6 +4,15 @@ interface Post {
   slug: string;
 }
 
+interface User {
+  id: number;
+  username: string;
+  email: string;
+  age: number;
+  is_active: boolean;
+  description: string;
+}
+
 // export async function generateStaticParams() {
 //   const posts: Post[] = await fetch('http://localhost:3000/api/content').then(
 //     (res) => res.json()
@@ -18,17 +27,17 @@ interface Props {
   params: { slug: string };
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function BlogPostPage({ params } :any) {
   // deduped
-  const posts: Post[] = await fetch('http://localhost:3000/api/content').then(
+  const users: User[] = await fetch('http://localhost:3000/api/content').then(
     (res) => res.json()
   );
-  const post = posts.find((post) => post.slug === params.slug)!;
+  const user = users.find((user) => user.id.toString() === params.slug)!;
 
   return (
     <div>
-      <h1>{post.title}</h1>
-      <p>{post.content}</p>
+      <h1>{user.username}</h1>
+      <p>{user.description}</p>
     </div>
   );
 }
